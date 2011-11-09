@@ -267,15 +267,30 @@ public class BloomView extends FrameView {
          //* **************************************************************
         
         
-        
-        String paragraph = "Esta es la primera frase. Esta es la segunda.";
+        jTextArea2.setText("");
+        String paragraph = jTextArea1.getText();
 
-        opennlp.tools.lang.spanish.SentenceDetector x = null;
+        opennlp.tools.lang.spanish.SentenceDetector sentDetect = null;
         try {
-            x = new opennlp.tools.lang.spanish.SentenceDetector("D:/Documents/repos/Mercurial/bloom/bloom/lib/models/sentdetect/SpanishSent.bin");
-            String[] output;
-            output = x.sentDetect(paragraph);
-            jTextArea2.setText(output[0]);
+            sentDetect = new opennlp.tools.lang.spanish.SentenceDetector("D:/Documents/repos/Mercurial/bloom/bloom/lib/models/sentdetect/SpanishSent.bin.gz");
+            String[] sentences;
+            sentences = sentDetect.sentDetect(paragraph);
+            for (int i = 0; i < sentences.length; i++) {
+                opennlp.tools.lang.spanish.Tokenizer tknizer = null;
+                tknizer = new opennlp.tools.lang.spanish.Tokenizer("D:/Documents/repos/Mercurial/bloom/bloom/lib/models/tokenize/SpanishTok.bin.gz");
+                String[] tokens;
+                tokens = tknizer.tokenize(sentences[i]);
+                opennlp.tools.lang.spanish.PosTagger posTagg = null;
+                posTagg = new opennlp.tools.lang.spanish.PosTagger("D:/Documents/repos/Mercurial/bloom/bloom/lib/models/postag/SpanishPOS.bin.gz");
+                String taggedToken = "";
+                for (int j = 0; j < tokens.length; j++) {
+                    
+                    taggedToken = posTagg.tag(tokens[j]);
+                    jTextArea2.setText(jTextArea2.getText() + taggedToken + ", ");
+                }
+                jTextArea2.setText(jTextArea2.getText() + "\n\n");
+            }
+            
         }
         catch(IOException ioe) {
             
