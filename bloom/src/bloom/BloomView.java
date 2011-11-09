@@ -252,40 +252,6 @@ public class BloomView extends FrameView {
     public void Lemmatizer() throws FileNotFoundException {
         SnowballStemmer stemmer = (SnowballStemmer) new spanishStemmer();
         Map<String, Integer> verbsMap = new HashMap<String, Integer>();
-        /*
-        SnowballStemmer stemmer = (SnowballStemmer) new spanishStemmer();
-        Map<String, Integer> verbsMap = new HashMap<String, Integer>();
-        
-        String input = jTextArea1.getText();
-        Scanner sc = new Scanner(input);
-        sc.useDelimiter(",");
-        String output = "";
-        
-        while (sc.hasNext()) {
-            stemmer.setCurrent(sc.next());
-            stemmer.stem();
-            String tmp = stemmer.getCurrent();
-            if (map.get(tmp) == null) {
-                map.put(tmp, 1);
-            } else {
-                map.put(tmp, map.get(tmp) + 1);
-            }
-        }
-        
-        Iterator it = map.keySet().iterator();
-        
-        while (it.hasNext()) {
-            String key = it.next().toString();
-            String value = map.get(key).toString();
-            output += key + " -> " + value + "\n";
-        }
-
-        jTextArea2.setText(output);
-        
-        */
-         //* **************************************************************
-        
-        
         jTextArea2.setText("");
         String paragraph = jTextArea1.getText();
         
@@ -299,9 +265,7 @@ public class BloomView extends FrameView {
                 tknizer = new opennlp.tools.lang.spanish.Tokenizer("D:/Documents/repos/Mercurial/bloom/bloom/lib/models/tokenize/SpanishTok.bin.gz");
                 String[] sentenceTokens;
                 sentenceTokens = tknizer.tokenize(sentences[i]);
-                
-                
-                
+
                 opennlp.tools.lang.spanish.PosTagger posTagg = null;
                 posTagg = new opennlp.tools.lang.spanish.PosTagger("D:/Documents/repos/Mercurial/bloom/bloom/lib/models/postag/SpanishPOS.bin.gz");
                 
@@ -309,11 +273,8 @@ public class BloomView extends FrameView {
                 taggedSentenceTokens = posTagg.tag(sentenceTokens);
 
                 for (int j = 0; j < sentenceTokens.length; j++) {
-                    
-
-            
                     if (taggedSentenceTokens[j].substring(0, 1).equals("V")) {
-                        stemmer.setCurrent(sentenceTokens[j]);
+                        stemmer.setCurrent(sentenceTokens[j].toLowerCase());
                         stemmer.stem();
                         String tmp = stemmer.getCurrent();
                         if (verbsMap.get(tmp) == null) {
@@ -325,19 +286,26 @@ public class BloomView extends FrameView {
                     } else {
                         jTextArea2.setText(jTextArea2.getText() + sentenceTokens[j] + " ");
                     }
-                    
-                    
                 }
 
                 jTextArea2.setText(jTextArea2.getText() + "\n");
                 
             }
             
+            /*
             Iterator it = verbsMap.keySet().iterator();
             String output = "";
             while (it.hasNext()) {
                 String key = it.next().toString();
                 String value = verbsMap.get(key).toString();
+                output += key + " -> " + value + "\n";
+            }
+            */
+            String value = "";
+            String output = "";
+            TreeSet<String> keys = new TreeSet<String>(verbsMap.keySet());
+            for (String key : keys) { 
+                value = verbsMap.get(key).toString();
                 output += key + " -> " + value + "\n";
             }
 
