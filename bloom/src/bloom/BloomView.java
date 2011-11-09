@@ -15,10 +15,11 @@ import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import java.util.*;
 import org.tartarus.snowball.SnowballStemmer;
 import org.tartarus.snowball.ext.spanishStemmer;
-import java.util.Scanner;
-import java.util.*;
+import java.io.*;
+import opennlp.tools.sentdetect.*;
 
 /**
  * The application's main frame.
@@ -231,8 +232,8 @@ public class BloomView extends FrameView {
     }// </editor-fold>//GEN-END:initComponents
 
     @Action
-    public void Lemmatizer() {
-        
+    public void Lemmatizer() throws FileNotFoundException {
+        /*
         SnowballStemmer stemmer = (SnowballStemmer) new spanishStemmer();
         Map<String, Integer> map = new HashMap<String, Integer>();
         
@@ -261,6 +262,26 @@ public class BloomView extends FrameView {
         }
 
         jTextArea2.setText(output);
+        
+        */
+         //* **************************************************************
+        
+        
+        
+        String paragraph = "Esta es la primera frase. Esta es la segunda.";
+
+        opennlp.tools.lang.spanish.SentenceDetector x = null;
+        try {
+            x = new opennlp.tools.lang.spanish.SentenceDetector("D:/Documents/repos/Mercurial/bloom/bloom/lib/models/sentdetect/SpanishSent.bin");
+            String[] output;
+            output = x.sentDetect(paragraph);
+            jTextArea2.setText(output[0]);
+        }
+        catch(IOException ioe) {
+            
+        }
+        
+        
         
     }
 
