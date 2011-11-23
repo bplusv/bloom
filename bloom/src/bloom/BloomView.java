@@ -16,10 +16,9 @@ import javax.swing.Icon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import java.util.*;
-import org.tartarus.snowball.SnowballStemmer;
-import org.tartarus.snowball.ext.spanishStemmer;
 import java.io.*;
-import opennlp.tools.sentdetect.*;
+import java.awt.*;
+import java.awt.geom.*;
 
 /**
  * The application's main frame.
@@ -30,6 +29,8 @@ public class BloomView extends FrameView {
         super(app);
 
         initComponents();
+        
+       
 
         // status bar initialization - message timeout, idle icon and busy animation, etc
         ResourceMap resourceMap = getResourceMap();
@@ -109,17 +110,16 @@ public class BloomView extends FrameView {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
         javax.swing.JMenu helpMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem aboutMenuItem = new javax.swing.JMenuItem();
         statusPanel = new javax.swing.JPanel();
-        javax.swing.JSeparator statusPanelSeparator = new javax.swing.JSeparator();
+        statusPanelSeparator = new javax.swing.JSeparator();
         statusMessageLabel = new javax.swing.JLabel();
         statusAnimationLabel = new javax.swing.JLabel();
         progressBar = new javax.swing.JProgressBar();
@@ -139,52 +139,61 @@ public class BloomView extends FrameView {
         jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
         jButton1.setName("jButton1"); // NOI18N
 
-        jScrollPane2.setName("jScrollPane2"); // NOI18N
+        jPanel1.setName("jPanel1"); // NOI18N
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(10);
-        jTextArea2.setName("jTextArea2"); // NOI18N
-        jScrollPane2.setViewportView(jTextArea2);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 347, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 349, Short.MAX_VALUE)
+        );
 
-        jScrollPane3.setName("jScrollPane3"); // NOI18N
+        jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
+        jLabel2.setName("jLabel2"); // NOI18N
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(10);
-        jTextArea3.setName("jTextArea3"); // NOI18N
-        jScrollPane3.setViewportView(jTextArea3);
+        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
+        jLabel1.setName("jLabel1"); // NOI18N
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                        .addGap(419, 419, 419)
-                        .addComponent(jButton1))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                .addContainerGap(683, Short.MAX_VALUE)
+                .addComponent(jButton1)
                 .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+            .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
-                .addGap(14, 14, 14)
-                .addComponent(jButton1)
-                .addContainerGap())
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addContainerGap(35, Short.MAX_VALUE))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addContainerGap())))
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -220,11 +229,11 @@ public class BloomView extends FrameView {
         statusPanel.setLayout(statusPanelLayout);
         statusPanelLayout.setHorizontalGroup(
             statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
+            .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 819, Short.MAX_VALUE)
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 433, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 649, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
@@ -254,102 +263,100 @@ public class BloomView extends FrameView {
         ArrayList<String> stemmedVerbs = VerbsStemmer.Stem(verbs);
         Map<String, Integer> map = StemsCounter.Count(stemmedVerbs);
         
-        Map<String, Integer> bloomTax = BloomCategorizer.Categorize(map);
+        Map<Integer, Integer> bloomTax = BloomCategorizer.Categorize(map);
         
-        String output = "";   
-        for (String key : bloomTax.keySet()) { 
-                output += key + " -> " + bloomTax.get(key).toString() + "\n";
+        float totalVerbs = 0.0f;
+        
+        String output = "";
+        float categorizedVerbs = 0.0f;
+        for (Integer key : bloomTax.keySet()) {
+            totalVerbs += bloomTax.get(key);
+            if (key != 6) {
+                categorizedVerbs += bloomTax.get(key);
+            }
         }
-        jTextArea3.setText(output);
+        
+        jLabel1.setText("Total de verbos detectados: " + (int)totalVerbs);
+        jLabel2.setText("Total de verbos categorizados: " + (int)categorizedVerbs);
         
         
+        Graphics g = jPanel1.getGraphics();
+        g.clearRect(0, 0, 500, 500);
+        int i = 280;
+        int i2 = 255;
+        for (Integer key: bloomTax.keySet()) {
+            if (key != 6) {
+                float percentage = bloomTax.get(key) / (categorizedVerbs > 0 ? categorizedVerbs : 1);
+                g.setColor(Color.black);
+                String bloomLabel = "";
+                switch (key) {
+                    case 0:
+                        bloomLabel = "1) RECORDAR  -  ";
+                    break;
+                    case 1:
+                        bloomLabel = "2) COMPRENDER  -  ";
+                    break;
+                    case 2:
+                        bloomLabel = "3) APLICAR  -  ";
+                    break;
+                    case 3:
+                        bloomLabel = "4) ANALIZAR  -  ";
+                    break;
+                    case 4:
+                        bloomLabel = "5) SINTETIZAR  -  ";
+                    break;
+                    case 5:
+                        bloomLabel = "6) EVALUAR  -  ";
+                    break;
+                }
+                g.drawString(bloomLabel + (percentage * 100) + "%", 120, i);
+                if (percentage >= 0 && percentage <= 0.15) {
+                    g.setColor(Color.red);
+                } else if (percentage > 0.15 && percentage <= 0.25) {
+                    g.setColor(Color.yellow);
+                } else {
+                    g.setColor(Color.green);
+                }
+                g.fill3DRect(0, i2, 100, 50, false);
+                i -= 50;
+                i2 -= 50;
+            }
+        }
+        
+        
+        //jTextArea2.setText(output);
         
         /*
-        SnowballStemmer stemmer = (SnowballStemmer) new spanishStemmer();
-        Map<String, Integer> verbsMap = new HashMap<String, Integer>();
-        jTextArea2.setText("");
-        String paragraph = jTextArea1.getText();
-        
-        opennlp.tools.lang.spanish.SentenceDetector sentDetect = null;
-        try {
-            sentDetect = new opennlp.tools.lang.spanish.SentenceDetector("D:/Documents/repos/Mercurial/bloom/bloom/lib/models/sentdetect/SpanishSent.bin.gz");
-            String[] sentences;
-            sentences = sentDetect.sentDetect(paragraph);
-            for (int i = 0; i < sentences.length; i++) {
-                opennlp.tools.lang.spanish.Tokenizer tknizer = null;
-                tknizer = new opennlp.tools.lang.spanish.Tokenizer("D:/Documents/repos/Mercurial/bloom/bloom/lib/models/tokenize/SpanishTok.bin.gz");
-                String[] sentenceTokens;
-                sentenceTokens = tknizer.tokenize(sentences[i]);
-
-                opennlp.tools.lang.spanish.PosTagger posTagg = null;
-                posTagg = new opennlp.tools.lang.spanish.PosTagger("D:/Documents/repos/Mercurial/bloom/bloom/lib/models/postag/SpanishPOS.bin.gz");
-                
-                String[] taggedSentenceTokens;
-                taggedSentenceTokens = posTagg.tag(sentenceTokens);
-
-                for (int j = 0; j < sentenceTokens.length; j++) {
-                    if (taggedSentenceTokens[j].substring(0, 1).equals("V")) {
-                        stemmer.setCurrent(sentenceTokens[j].toLowerCase());
-                        stemmer.stem();
-                        String tmp = stemmer.getCurrent();
-                        if (verbsMap.get(tmp) == null) {
-                            verbsMap.put(tmp, 1);
-                        } else {
-                            verbsMap.put(tmp, verbsMap.get(tmp) + 1);
-                        }
-                        jTextArea2.setText(jTextArea2.getText() + sentenceTokens[j] + "/" + taggedSentenceTokens[j] + " ");
-                    } else {
-                        jTextArea2.setText(jTextArea2.getText() + sentenceTokens[j] + " ");
-                    }
-                }
-
-                jTextArea2.setText(jTextArea2.getText() + "\n");
-                
-            }
-            
-            /*
-            Iterator it = verbsMap.keySet().iterator();
-            String output = "";
-            while (it.hasNext()) {
-                String key = it.next().toString();
-                String value = verbsMap.get(key).toString();
-                output += key + " -> " + value + "\n";
-            }
-            */
-            /*
-            String value = "";
-            String output = "";
-            TreeSet<String> keys = new TreeSet<String>(verbsMap.keySet());
-            for (String key : keys) { 
-                value = verbsMap.get(key).toString();
-                output += key + " -> " + value + "\n";
-            }
-
-            jTextArea3.setText(output);
-            
-        }
-        catch(IOException ioe) {
-            
-        }
+        g.setColor(Color.cyan);
+        g.fill3DRect(0, 0, 100, 50, false);
+        g.setColor(Color.green);
+        g.fill3DRect(0, 50, 100, 50, false);
+        g.setColor(Color.green);
+        g.fill3DRect(0, 100, 100, 50, false);
+        g.setColor(Color.green);
+        g.fill3DRect(0, 150, 100, 50, false);
+        g.setColor(Color.red);
+        g.fill3DRect(0, 200, 100, 50, false);
+        g.setColor(Color.yellow);
+        g.fill3DRect(0, 250, 100, 50, false);
         */
-        
-        
     }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JProgressBar progressBar;
     private javax.swing.JLabel statusAnimationLabel;
     private javax.swing.JLabel statusMessageLabel;
     private javax.swing.JPanel statusPanel;
+    private javax.swing.JSeparator statusPanelSeparator;
     // End of variables declaration//GEN-END:variables
 
     private final Timer messageTimer;
