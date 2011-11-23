@@ -4,7 +4,6 @@
 
 package bloom;
 
-import java.awt.Color;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -250,6 +249,22 @@ public class BloomView extends FrameView {
 
     @Action
     public void Lemmatizer() throws FileNotFoundException {
+        String paragraph = jTextArea1.getText();
+        ArrayList<String> verbs = VerbsDetector.Detect(paragraph);
+        ArrayList<String> stemmedVerbs = VerbsStemmer.Stem(verbs);
+        Map<String, Integer> map = StemsCounter.Count(stemmedVerbs);
+        
+        Map<String, Integer> bloomTax = BloomCategorizer.Categorize(map);
+        
+        String output = "";   
+        for (String key : bloomTax.keySet()) { 
+                output += key + " -> " + bloomTax.get(key).toString() + "\n";
+        }
+        jTextArea3.setText(output);
+        
+        
+        
+        /*
         SnowballStemmer stemmer = (SnowballStemmer) new spanishStemmer();
         Map<String, Integer> verbsMap = new HashMap<String, Integer>();
         jTextArea2.setText("");
@@ -301,6 +316,7 @@ public class BloomView extends FrameView {
                 output += key + " -> " + value + "\n";
             }
             */
+            /*
             String value = "";
             String output = "";
             TreeSet<String> keys = new TreeSet<String>(verbsMap.keySet());
@@ -310,11 +326,12 @@ public class BloomView extends FrameView {
             }
 
             jTextArea3.setText(output);
+            
         }
         catch(IOException ioe) {
             
         }
-        
+        */
         
         
     }
