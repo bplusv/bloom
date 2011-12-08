@@ -6,8 +6,9 @@ import opennlp.tools.lang.spanish.*;
  *
  * @author lu
  */
-public class VerbsDetector {
-    public static ArrayList<String> Detect(String input) {
+public class OpenNLP {
+    
+        public static ArrayList<String> DetectVerbs(String input) {
         ArrayList<String> _output = new ArrayList<String>();
         String[] _sentences;
         String[] _sentenceTokens;

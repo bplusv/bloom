@@ -30,8 +30,7 @@ public class BloomView extends FrameView {
 
         initComponents();
         
-       
-
+    
         // status bar initialization - message timeout, idle icon and busy animation, etc
         ResourceMap resourceMap = getResourceMap();
         int messageTimeout = resourceMap.getInteger("StatusBar.messageTimeout");
@@ -113,22 +112,26 @@ public class BloomView extends FrameView {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
         javax.swing.JMenu helpMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem aboutMenuItem = new javax.swing.JMenuItem();
         statusPanel = new javax.swing.JPanel();
-        statusPanelSeparator = new javax.swing.JSeparator();
+        javax.swing.JSeparator statusPanelSeparator = new javax.swing.JSeparator();
         statusMessageLabel = new javax.swing.JLabel();
         statusAnimationLabel = new javax.swing.JLabel();
         progressBar = new javax.swing.JProgressBar();
 
+        mainPanel.setMaximumSize(new java.awt.Dimension(800, 600));
         mainPanel.setName("mainPanel"); // NOI18N
 
         jScrollPane1.setName("jScrollPane1"); // NOI18N
 
         jTextArea1.setColumns(20);
+        jTextArea1.setLineWrap(true);
         jTextArea1.setRows(10);
         jTextArea1.setName("jTextArea1"); // NOI18N
         jScrollPane1.setViewportView(jTextArea1);
@@ -149,7 +152,7 @@ public class BloomView extends FrameView {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 349, Short.MAX_VALUE)
+            .addGap(0, 439, Short.MAX_VALUE)
         );
 
         jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
@@ -157,6 +160,13 @@ public class BloomView extends FrameView {
 
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
+
+        jScrollPane2.setName("jScrollPane2"); // NOI18N
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(10);
+        jTextArea2.setName("jTextArea2"); // NOI18N
+        jScrollPane2.setViewportView(jTextArea2);
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
@@ -166,40 +176,37 @@ public class BloomView extends FrameView {
                 .addContainerGap()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 619, Short.MAX_VALUE))
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addContainerGap())
-                    .addGroup(mainPanelLayout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE))
+                    .addComponent(jLabel2)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 751, Short.MAX_VALUE)
+                        .addComponent(jButton1)))
+                .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(38, 38, 38)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
-                        .addContainerGap(35, Short.MAX_VALUE))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
-                        .addContainerGap())))
+                        .addComponent(jLabel2)))
+                .addContainerGap())
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -235,11 +242,11 @@ public class BloomView extends FrameView {
         statusPanel.setLayout(statusPanelLayout);
         statusPanelLayout.setHorizontalGroup(
             statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 819, Short.MAX_VALUE)
+            .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 1123, Short.MAX_VALUE)
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 649, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 953, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
@@ -265,22 +272,39 @@ public class BloomView extends FrameView {
     @Action
     public void Lemmatizer() throws FileNotFoundException {
         String paragraph = jTextArea1.getText();
-        ArrayList<String> verbs = VerbsDetector.Detect(paragraph);
+        ArrayList<String> verbs = OpenNLP.DetectVerbs(paragraph);
         ArrayList<String> stemmedVerbs = VerbsStemmer.Stem(verbs);
-        Map<String, Integer> map = StemsCounter.Count(stemmedVerbs);
         
+        ArrayList<String> verbsActualBloomVerbs = new ArrayList<String>();
+        for (int i = 0; i < stemmedVerbs.size(); i++) {
+            verbsActualBloomVerbs.add(BloomCategorizer.CategorizeSingleGetVerb(stemmedVerbs.get(i)));
+        }
+        
+        String result = "";
+        ArrayList<Integer> verbsActualCategories = new ArrayList<Integer>();
+        for (int i = 0; i < stemmedVerbs.size(); i++) {
+            verbsActualCategories.add(BloomCategorizer.CategorizeSingle(stemmedVerbs.get(i)));
+            String cont = "";
+            if (verbsActualCategories.get(i) < 6) {
+                cont = "  =>  " + (verbsActualCategories.get(i) + 1) + " | " + verbsActualBloomVerbs.get(i);
+            }
+            result += verbs.get(i) + " | " + stemmedVerbs.get(i) + cont + "\n";
+        }
+        
+        jTextArea2.setText(result);
+        
+        Map<String, Integer> map = StemsCounter.Count(stemmedVerbs);
         Map<Integer, Integer> bloomTax = BloomCategorizer.Categorize(map);
         
-        float totalVerbs = 0.0f;
+        float totalVerbs = (float)verbs.size();
         
-        String output = "";
         float categorizedVerbs = 0.0f;
-        for (Integer key : bloomTax.keySet()) {
-            totalVerbs += bloomTax.get(key);
-            if (key != 6) {
-                categorizedVerbs += bloomTax.get(key);
+        for (int i = 0; i < verbsActualCategories.size(); i++) {
+            if (verbsActualCategories.get(i) < 6) {
+                categorizedVerbs++;
             }
         }
+
         
         jLabel1.setText("Total de verbos detectados: " + (int)totalVerbs);
         jLabel2.setText("Total de verbos categorizados: " + (int)categorizedVerbs);
@@ -290,12 +314,40 @@ public class BloomView extends FrameView {
         g.clearRect(0, 0, 500, 500);
         int i = 280;
         int i2 = 255;
-        for (Integer key: bloomTax.keySet()) {
-            if (key != 6) {
-                float percentage = bloomTax.get(key) / (categorizedVerbs > 0 ? categorizedVerbs : 1);
+        
+        int[] categoriesCount = new int[6];
+        for (int x = 0; x < 6; x++) {
+            categoriesCount[x] = 0;
+        }
+        
+        for (int counter = 0; counter < verbsActualCategories.size(); counter++) {
+            switch (verbsActualCategories.get(counter)) {
+                case 0:
+                    categoriesCount[0]++;
+                    break;
+                case 1:
+                    categoriesCount[1]++;
+                    break;
+                case 2:
+                    categoriesCount[2]++;
+                    break;
+                case 3:
+                    categoriesCount[3]++;
+                    break;
+                case 4:
+                    categoriesCount[4]++;
+                    break;
+                case 5:
+                    categoriesCount[5]++;
+                    break;
+            }
+        }
+        
+        for (int cat = 0; cat < 6; cat++) {
+                float percentage = categoriesCount[cat] / (categorizedVerbs > 0 ? categorizedVerbs : 1);
                 g.setColor(Color.black);
                 String bloomLabel = "";
-                switch (key) {
+                switch (cat) {
                     case 0:
                         bloomLabel = "1) RECORDAR  -  ";
                     break;
@@ -309,10 +361,10 @@ public class BloomView extends FrameView {
                         bloomLabel = "4) ANALIZAR  -  ";
                     break;
                     case 4:
-                        bloomLabel = "5) SINTETIZAR  -  ";
+                        bloomLabel = "5) EVALUAR  -  ";
                     break;
                     case 5:
-                        bloomLabel = "6) EVALUAR  -  ";
+                        bloomLabel = "6) CREAR -  ";
                     break;
                 }
                 g.drawString(bloomLabel + (percentage * 100) + "%", 120, i);
@@ -326,27 +378,10 @@ public class BloomView extends FrameView {
                 g.fill3DRect(0, i2, 100, 50, false);
                 i -= 50;
                 i2 -= 50;
-            }
+
         }
-        
-        
-        //jTextArea2.setText(output);
-        
-        /*
-        g.setColor(Color.cyan);
-        g.fill3DRect(0, 0, 100, 50, false);
-        g.setColor(Color.green);
-        g.fill3DRect(0, 50, 100, 50, false);
-        g.setColor(Color.green);
-        g.fill3DRect(0, 100, 100, 50, false);
-        g.setColor(Color.green);
-        g.fill3DRect(0, 150, 100, 50, false);
-        g.setColor(Color.red);
-        g.fill3DRect(0, 200, 100, 50, false);
-        g.setColor(Color.yellow);
-        g.fill3DRect(0, 250, 100, 50, false);
-        */
     }
+
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -355,14 +390,15 @@ public class BloomView extends FrameView {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JProgressBar progressBar;
     private javax.swing.JLabel statusAnimationLabel;
     private javax.swing.JLabel statusMessageLabel;
     private javax.swing.JPanel statusPanel;
-    private javax.swing.JSeparator statusPanelSeparator;
     // End of variables declaration//GEN-END:variables
 
     private final Timer messageTimer;

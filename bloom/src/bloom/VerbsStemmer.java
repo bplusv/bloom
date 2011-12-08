@@ -13,8 +13,8 @@ public class VerbsStemmer {
     public static ArrayList<String> Stem(ArrayList<String> input) {
         ArrayList<String> _output = new ArrayList<String>();
         SnowballStemmer _stemmer = (SnowballStemmer) new spanishStemmer();
-        for (String item: input) {
-            _stemmer.setCurrent(item.toLowerCase());
+        for (int i = 0; i < input.size(); i++) {
+            _stemmer.setCurrent(input.get(i).toLowerCase());
             _stemmer.stem();
             _output.add(_stemmer.getCurrent());
         }
