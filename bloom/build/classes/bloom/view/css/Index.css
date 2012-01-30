@@ -1,0 +1,11 @@
+#mainGrid {
+    -fx-padding: 5;
+}
+
+.inteviewText {
+    -fx-background-color:#fff;
+}
+
+root { 
+    display: block;
+}

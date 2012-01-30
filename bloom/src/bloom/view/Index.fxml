@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+
+<BorderPane fx:controller="bloom.controller.Index" xmlns:fx="http://javafx.com/fxml">
+     <top>
+         <GridPane fx:id="mainGrid">
+             <children>
+                <Label text="%input" labelFor="$input" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.Halignment="CENTER" />
+                <TextArea fx:id="inputText" GridPane.rowIndex="1" GridPane.columnIndex="0" wrapText="true" prefRowCount="50" prefColumnCount="50"><styleClass><String fx:value="interviewText" /></styleClass></TextArea>
+                <Label text="%output" labelFor="$output" GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.Halignment="CENTER" />
+                <TextArea fx:id="outputText" GridPane.rowIndex="1" GridPane.columnIndex="1" wrapText="true" prefRowCount="50" prefColumnCount="50"><styleClass><String fx:value="interviewText" /></styleClass></TextArea>
+                <Button fx:id="tagButton" text="%tagText" onAction="#tagText" GridPane.rowIndex="2" GridPane.columnIndex="1" GridPane.Halignment="RIGHT"/>
+             </children>
+         </GridPane>
+     </top>
+     <center>
+         
+     </center>
+     <bottom>
+         
+     </bottom>
+</BorderPane>

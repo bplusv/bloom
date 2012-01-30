@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="bloom.jnlp">
+  <information>
+    <title>bloom</title>
+    <vendor>lu</vendor>
+    <description>Sample JavaFX 2.0 application.</description>
+    <offline-allowed/>
+  </information>
+  <resources os="Windows">
+    <jfx:javafx-runtime version="2.0+" href="http://javadl.sun.com/webapps/download/GetFile/javafx-latest/windows-i586/javafx2.jnlp"/>
+  </resources>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="bloom.jar" size="20003" download="eager" />
+    <jar href="lib/jwnl-1.3.3.jar" size="186617" download="eager" />
+    <jar href="lib/maxent-2.5.2.jar" size="72827" download="eager" />
+    <jar href="lib/opennlp-tools-1.4.3.jar" size="356657" download="eager" />
+    <jar href="lib/snowball.jar" size="88926" download="eager" />
+    <jar href="lib/trove-1.0.2.jar" size="387533" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="bloom" />
+  <jfx:javafx-desc  width="800" height="600" main-class="bloom.Bloom"  name="bloom" />
+  <update check="background"/>
+</jnlp>
