@@ -9,8 +9,6 @@ import org.tartarus.snowball.SnowballStemmer;
 import org.tartarus.snowball.ext.spanishStemmer;
 
 public class NLPTools {
-    
-    
     public static String[] detectVerbs(final String input) {
         String[] _sentences;
         String[] _sentenceTokens;
@@ -39,13 +37,25 @@ public class NLPTools {
         }
         catch(IOException ioe) {
             System.out.println(ioe.toString());
-        }
-        
+        }        
+        return _output.toArray(new String[_output.size()]);
+    }
+    
+    public static String stemVerb(String verb) {
         SnowballStemmer _stemmer = (SnowballStemmer) new spanishStemmer();
-        _stemmer.setCurrent(input);
+        _stemmer.setCurrent(verb);
         _stemmer.stem();
-        //_output = _stemmer.getCurrent();
-        
+        return _stemmer.getCurrent();
+    }
+    
+    public static String[] stemVerbs(String[] verbs) {
+        SnowballStemmer _stemmer = (SnowballStemmer) new spanishStemmer();
+        ArrayList<String> _output = new ArrayList<>();
+        for (int i = 0; i < verbs.length; i++) {
+            _stemmer.setCurrent(verbs[i]);
+            _stemmer.stem();
+            _output.add(_stemmer.getCurrent());
+        }
         return _output.toArray(new String[_output.size()]);
     }
 }
