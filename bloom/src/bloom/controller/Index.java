@@ -1,30 +1,45 @@
 package bloom.controller;
 
-import bloom.Bloom;
 import bloom.model.Interview;
 import bloom.model.Verb;
-import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.ListView;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Index {
-    private Interview _interview = Bloom.getInterview();
     @FXML private TextArea inputText;
-    @FXML private TextArea outputText;
+    @FXML private ListView bloomList;
+    @FXML private ListView verbStemList;
+    @FXML private ListView verbList;
     
-    @FXML private void tagText(ActionEvent event) {
-        _interview = new Interview();
-        _interview.setText(inputText.getText());
-        _interview.detectVerbs();
-        _interview.stemVerbs();
-        _interview.bloomCategorize();
-        
-        ArrayList<Verb> verbs = _interview.getVerbs();
-        String _output = "";
-        for (Verb verb:verbs) {
-            _output += verb.getBloomCategory() + ", ";
+    private ObservableList<Integer> bloomItems;
+    private ObservableList<String> verbStemItems;
+    private ObservableList<String> verbItems;
+    
+    public Index() {
+        bloomItems = FXCollections.observableArrayList();
+        verbStemItems = FXCollections.observableArrayList();
+        verbItems = FXCollections.observableArrayList();
+    }
+    @FXML private void tagText(ActionEvent event) {        
+        Interview interview = new Interview();
+        interview.setText(inputText.getText());
+        interview.detectVerbs();
+        interview.stemVerbs();
+        interview.bloomCategorize();
+        bloomItems.clear();
+        verbStemItems.clear();
+        verbItems.clear();
+        for (Verb verb:interview.getVerbs()) {
+            bloomItems.add(verb.getBloomCategory());
+            verbStemItems.add(verb.getVerbStem());
+            verbItems.add(verb.getVerb());
         }
-        outputText.setText(_output);
+        bloomList.setItems(bloomItems);
+        verbStemList.setItems(verbStemItems);
+        verbList.setItems(verbItems);
     }
 }

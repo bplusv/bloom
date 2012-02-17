@@ -1,11 +1,9 @@
-#mainGrid {
-    -fx-padding: 5;
+@charset "utf-8";
+
+#hbButtons {
+    -fx-padding: 15 0 0 0;
 }
 
-.inteviewText {
-    -fx-background-color:#fff;
-}
-
-root { 
-    display: block;
+.interviewText {
+    -fx-background-color:#eee;
 }

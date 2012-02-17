@@ -1,37 +1,37 @@
 package bloom.model;
 
-import bloom.tools.Categorizer;
-import bloom.tools.NLPTools;
+import bloom.nlp.Categorizer;
+import bloom.nlp.NLPTools;
 import java.util.ArrayList;
 
 public class Interview {
-    private String _interview = "";
-    private ArrayList<Verb> _interviewVerbs = new ArrayList<Verb>();
-    
-    public void setText(final String text) {
-        _interview = text;
+    private String interview = "";
+    private ArrayList<Verb> interviewVerbs = new ArrayList<Verb>();
+
+    public String getText() {
+        return interview;
     }
     
-    public String getText() {
-        return _interview;
+    public void setText(final String interview) {
+        this.interview = interview;
     }
     
     public void detectVerbs() {
-        String[] verbs = NLPTools.detectVerbs(_interview);
+        String[] verbs = NLPTools.detectVerbs(interview);
         for (String verb:verbs) {
-            _interviewVerbs.add(new Verb(verb.toLowerCase()));
+            interviewVerbs.add(new Verb(verb.toLowerCase()));
         }
     }
     
     public void stemVerbs() {
-        for (Verb verb:_interviewVerbs) {
+        for (Verb verb:interviewVerbs) {
             verb.setVerbStem(NLPTools.stemVerb(verb.getVerb()));
         }
     }
     
     public void bloomCategorize() {
-        for (Verb verb:_interviewVerbs) {
-            verb.setBloomCategory(Categorizer.bloomCategorize(verb.getverbStem()));
+        for (Verb verb:interviewVerbs) {
+            verb.setBloomCategory(Categorizer.bloomCategorize(verb.getVerbStem()));
         }
     }
     
@@ -40,6 +40,6 @@ public class Interview {
     }
     
     public ArrayList<Verb> getVerbs() {
-        return _interviewVerbs;
+        return interviewVerbs;
     }
 }

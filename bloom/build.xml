@@ -10,6 +10,13 @@
 <project name="bloom" default="default" basedir=".">
     <description>Builds, tests, and runs the project bloom.</description>
     <import file="nbproject/build-impl.xml"/>
+    
+    <target depends="-jfx-copylibs,jfx-deployment" name="-post-jar">
+        <copy todir="${dist.dir}/lib/model">
+            <fileset dir="lib/model" includes="*.*"/>
+        </copy>
+    </target>
+    
     <!--
 
     There exist several targets which are by default empty and which can be 

@@ -1,47 +1,46 @@
 package bloom.model;
 
 public class Verb {
-    private String _verb;
-    private String _verbStem;
-    private int _bloomCategory;
-    private int _marzanoCategory;
+    private String verb;
+    private String verbStem;
+    private int bloomCategory;
+    private int marzanoCategory;
 
     public Verb(String verb) {
-        _verb = verb;
-        _verbStem = "";
-        _bloomCategory = 0;
-        _marzanoCategory = 0;
-    }
-    
-    public void setVerb(String verb) {
-        _verb = verb;
-    }
-    
-    public String getVerb() {
-        return _verb;
+        this.verb = verb;
+        verbStem = "";
+        bloomCategory = 0;
+        marzanoCategory = 0;
     }
 
-    public void setVerbStem(String verbStem) {
-        _verbStem = verbStem;
+    public String getVerb() {
+        return verb;
+    }
+
+    public void setVerb(String verb) {
+        this.verb = verb;
     }
     
-    public String getverbStem() {
-        return _verbStem;
+    public String getVerbStem() {
+        return verbStem;
     }
+    public void setVerbStem(String verbStem) {
+        this.verbStem = verbStem;
+    }
+    
+    public int getBloomCategory() {
+        return bloomCategory;
+    }  
     
     public void setBloomCategory(int bloomCategory) {
-        _bloomCategory = bloomCategory;
+        this.bloomCategory = bloomCategory;
     }
 
-    public int getBloomCategory() {
-        return _bloomCategory;
-    }    
-    
     public int getMarzanoCategory() {
-        return _marzanoCategory;
+        return marzanoCategory;
     }
 
     public void setMarzanoCategory(int marzanoCategory) {
-        _marzanoCategory = marzanoCategory;
+        this.marzanoCategory = marzanoCategory;
     }  
 }
