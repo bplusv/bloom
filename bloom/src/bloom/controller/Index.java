@@ -2,12 +2,12 @@ package bloom.controller;
 
 import bloom.model.Interview;
 import bloom.model.Verb;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.ListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 
 public class Index {
     @FXML private TextArea inputText;
@@ -24,7 +24,8 @@ public class Index {
         verbStemItems = FXCollections.observableArrayList();
         verbItems = FXCollections.observableArrayList();
     }
-    @FXML private void tagText(ActionEvent event) {        
+    
+    @FXML private void tagText(ActionEvent event) {
         Interview interview = new Interview();
         interview.setText(inputText.getText());
         interview.detectVerbs();

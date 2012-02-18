@@ -11,12 +11,12 @@
   </resources>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="bloom.jar" size="25460" download="eager" />
-    <jar href="lib/jwnl-1.3.3.jar" size="186615" download="eager" />
-    <jar href="lib/maxent-2.5.2.jar" size="72826" download="eager" />
-    <jar href="lib/opennlp-tools-1.4.3.jar" size="356657" download="eager" />
+    <jar href="bloom.jar" size="6989722" download="eager" />
+    <jar href="lib/jwnl-1.3.3.jar" size="186617" download="eager" />
+    <jar href="lib/maxent-2.5.2.jar" size="72829" download="eager" />
+    <jar href="lib/opennlp-tools-1.4.3.jar" size="356660" download="eager" />
     <jar href="lib/snowball.jar" size="88925" download="eager" />
-    <jar href="lib/trove-1.0.2.jar" size="387533" download="eager" />
+    <jar href="lib/trove-1.0.2.jar" size="387536" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="bloom" />
   <jfx:javafx-desc  width="800" height="600" main-class="bloom.MainApp"  name="bloom" />

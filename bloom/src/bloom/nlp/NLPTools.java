@@ -1,10 +1,14 @@
 package bloom.nlp;
 
+
+import java.io.DataInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import opennlp.tools.lang.spanish.PosTagger;
-import opennlp.tools.lang.spanish.SentenceDetector;
-import opennlp.tools.lang.spanish.Tokenizer;
+import opennlp.maxent.io.BinaryGISModelReader;
+import opennlp.tools.postag.DefaultPOSContextGenerator;
+import opennlp.tools.postag.POSTaggerME;
+import opennlp.tools.sentdetect.SentenceDetectorME;
+import opennlp.tools.tokenize.TokenizerME;
 import org.tartarus.snowball.SnowballStemmer;
 import org.tartarus.snowball.ext.spanishStemmer;
 
@@ -14,15 +18,21 @@ public class NLPTools {
         String[] sentenceTokens;
         String[] taggedSentenceTokens;
 
-        SentenceDetector sentenceDetector;
-        Tokenizer tokenizer;
-        PosTagger posTagger;
+        SentenceDetectorME sentenceDetector;
+        TokenizerME tokenizer;
+        POSTaggerME posTagger;
     
         ArrayList<String> output = new ArrayList<>();
         try {
-            sentenceDetector = new SentenceDetector("lib/model/SpanishSent.bin.gz");
-            tokenizer = new Tokenizer("lib/model/SpanishTok.bin.gz");
-            posTagger = new PosTagger("lib/model/SpanishPOS.bin.gz");
+            
+            DataInputStream senteceDetectorModel = new DataInputStream(NLPTools.class.getResourceAsStream("/bloom/nlp/model/SpanishSent.bin"));
+            sentenceDetector = new SentenceDetectorME(new BinaryGISModelReader(senteceDetectorModel).getModel());
+            
+            DataInputStream tokenizerModel = new DataInputStream(NLPTools.class.getResourceAsStream("/bloom/nlp/model/SpanishTok.bin"));
+            tokenizer = new TokenizerME(new BinaryGISModelReader(tokenizerModel).getModel());
+            
+            DataInputStream posTaggerModel = new DataInputStream(NLPTools.class.getResourceAsStream("/bloom/nlp/model/SpanishPOS.bin"));
+            posTagger = new POSTaggerME(new BinaryGISModelReader(posTaggerModel).getModel(), new DefaultPOSContextGenerator(null));
             
             sentences = sentenceDetector.sentDetect(input);
             for (int i = 0; i < sentences.length; i++) {
