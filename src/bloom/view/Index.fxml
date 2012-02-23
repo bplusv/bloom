@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+
+<BorderPane fx:controller="bloom.controller.Index" xmlns:fx="http://javafx.com/fxml">
+    <top>
+        <VBox>
+            <children>
+                <Label text="%input" labelFor="$inputText" />
+                <TextArea fx:id="inputText" wrapText="true">
+                    <styleClass>
+                        <String fx:value="interviewText" />
+                    </styleClass>
+                </TextArea>
+            </children>
+        </VBox>
+    </top>
+     <center>
+         <HBox>
+             <children>
+                 <ListView fx:id="bloomList" />
+                 <ListView fx:id="verbStemList" />
+                 <ListView fx:id="verbList" />
+             </children>
+         </HBox>
+     </center>
+     <bottom>
+        <HBox fx:id="hbButtons">
+            <children>
+                <Button fx:id="tagButton" text="%tagText" onAction="#tagText" />
+            </children>
+        </HBox>
+     </bottom>
+</BorderPane>
